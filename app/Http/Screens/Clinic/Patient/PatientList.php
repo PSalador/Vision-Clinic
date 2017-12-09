@@ -4,6 +4,7 @@ namespace App\Http\Screens\Clinic\Patient;
 
 use App\Http\Layouts\Clinic\Patient\PatientListLayout;
 use App\Core\Models\Patient;
+use Orchid\Platform\Screen\Link;
 use Orchid\Platform\Screen\Screen;
 
 class PatientList extends Screen
@@ -42,11 +43,7 @@ class PatientList extends Screen
     public function commandBar() : array
     {
         return [
-            'create'  => [
-                'displayName' => 'Создать',
-                'description' => 'Создать новую запись',
-                'method'      => 'create',
-            ]
+            Link::name('Создать новую запись')->method('create'),
         ];
     }
 

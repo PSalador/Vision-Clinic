@@ -4,7 +4,10 @@ namespace App\Http\Screens\Clinic\Patient;
 
 use App\Http\Layouts\Clinic\Patient\EditPatient;
 use App\Core\Models\Patient;
+use App\Http\Layouts\Clinic\Patient\PatientFirstRows;
+use App\Http\Layouts\Clinic\Patient\PatientSecondRows;
 use Orchid\Platform\Facades\Alert;
+use Orchid\Platform\Screen\Layouts;
 use Orchid\Platform\Screen\Screen;
 
 class AppointmentEdit extends Screen
@@ -66,7 +69,14 @@ class AppointmentEdit extends Screen
     public function layout() : array
     {
         return [
-            EditPatient::class,
+            Layouts::columns([
+                'Колонка 2' => [
+                    PatientFirstRows::class,
+                ],
+                'Колонка 1' => [
+                    PatientSecondRows::class,
+                ],
+            ]),
         ];
     }
 

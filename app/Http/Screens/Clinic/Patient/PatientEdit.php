@@ -2,10 +2,14 @@
 
 namespace App\Http\Screens\Clinic\Patient;
 
-use App\Http\Layouts\Clinic\Patient\EditPatient;
-use App\Http\Layouts\Clinic\Patient\EditTablePatient;
+use App\Http\Layouts\Clinic\Patient\AppointmentListLayout;
 use App\Core\Models\Patient;
+use App\Http\Layouts\Clinic\Patient\InvoiceListLayout;
+use App\Http\Layouts\Clinic\Patient\PatientFirstRows;
+use App\Http\Layouts\Clinic\Patient\PatientSecondRows;
 use Orchid\Platform\Facades\Alert;
+use Orchid\Platform\Screen\Layouts;
+use Orchid\Platform\Screen\Link;
 use Orchid\Platform\Screen\Screen;
 
 class PatientEdit extends Screen
@@ -50,26 +54,10 @@ class PatientEdit extends Screen
     public function commandBar() : array
     {
         return [
-            'appointment' => [
-                'displayName' => 'Записать на приём',
-                'description' => 'Записать на приём',
-                'method'      => 'save',
-            ],
-            'invoice'     => [
-                'displayName' => 'Выписать счёт',
-                'description' => 'Выписать счёт',
-                'method'      => 'save',
-            ],
-            'save'        => [
-                'displayName' => 'Сохранить',
-                'description' => 'Создать новую запись',
-                'method'      => 'save',
-            ],
-            'remove'      => [
-                'displayName' => 'Удалить',
-                'description' => 'Создать новую запись',
-                'method'      => 'remove',
-            ],
+            Link::name('Записать на приём')->method('save'),
+            Link::name('Выписать счёт')->method('save'),
+            Link::name('Сохранить')->method('save'),
+            Link::name('Удалить')->method('remove'),
         ];
     }
 
@@ -81,8 +69,22 @@ class PatientEdit extends Screen
     public function layout() : array
     {
         return [
-            EditPatient::class,
-            EditTablePatient::class,
+            Layouts::columns([
+                'Колонка 2' => [
+                    PatientFirstRows::class,
+                ],
+                'Колонка 1' => [
+                    PatientSecondRows::class,
+                ],
+            ]),
+            Layouts::columns([
+                'Колонка 1' => [
+                    AppointmentListLayout::class
+                ],
+                'Колонка 2' => [
+                    InvoiceListLayout::class
+                ],
+            ]),
         ];
     }
 

@@ -2,10 +2,15 @@
 
 namespace App\Http\Screens\Clinic\Product;
 
+use App\Http\Layouts\Clinic\Patient\AppointmentListLayout;
 use App\Http\Layouts\Clinic\Patient\EditPatient;
 use App\Http\Layouts\Clinic\Patient\EditTablePatient;
 use App\Core\Models\Patient;
+use App\Http\Layouts\Clinic\Patient\InvoiceListLayout;
+use App\Http\Layouts\Clinic\Patient\PatientFirstRows;
+use App\Http\Layouts\Clinic\Patient\PatientSecondRows;
 use Orchid\Platform\Facades\Alert;
+use Orchid\Platform\Screen\Layouts;
 use Orchid\Platform\Screen\Screen;
 
 class ProductEdit extends Screen
@@ -81,8 +86,22 @@ class ProductEdit extends Screen
     public function layout() : array
     {
         return [
-            EditPatient::class,
-            EditTablePatient::class,
+            Layouts::columns([
+                'Колонка 2' => [
+                    PatientFirstRows::class,
+                ],
+                'Колонка 1' => [
+                    PatientSecondRows::class,
+                ],
+            ]),
+            Layouts::columns([
+                'Колонка 1' => [
+                    AppointmentListLayout::class
+                ],
+                'Колонка 2' => [
+                    InvoiceListLayout::class
+                ],
+            ]),
         ];
     }
 
