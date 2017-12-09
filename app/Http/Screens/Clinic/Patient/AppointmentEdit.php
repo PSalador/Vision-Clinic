@@ -8,6 +8,7 @@ use App\Http\Layouts\Clinic\Patient\PatientFirstRows;
 use App\Http\Layouts\Clinic\Patient\PatientSecondRows;
 use Orchid\Platform\Facades\Alert;
 use Orchid\Platform\Screen\Layouts;
+use Orchid\Platform\Screen\Link;
 use Orchid\Platform\Screen\Screen;
 
 class AppointmentEdit extends Screen
@@ -48,16 +49,8 @@ class AppointmentEdit extends Screen
     public function commandBar() : array
     {
         return [
-            'create'  => [
-                'displayName' => 'Сохранить',
-                'description' => 'Создать новую запись',
-                'method'      => 'save',
-            ],
-            'remove'  => [
-                'displayName' => 'Удалить',
-                'description' => 'Создать новую запись',
-                'method'      => 'remove',
-            ],
+            Link::name('Сохранить')->method('save'),
+            Link::name('Удалить')->method('remove'),
         ];
     }
 

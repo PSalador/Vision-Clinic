@@ -4,6 +4,7 @@ namespace App\Http\Screens\Clinic\Product;
 
 use App\Http\Layouts\Clinic\Product\ProductListLayout;
 use App\Core\Models\Product;
+use Orchid\Platform\Screen\Link;
 use Orchid\Platform\Screen\Screen;
 
 class ProductList extends Screen
@@ -42,11 +43,7 @@ class ProductList extends Screen
     public function commandBar() : array
     {
         return [
-            'create'  => [
-                'displayName' => 'Создать',
-                'description' => 'Создать новую запись',
-                'method'      => 'create',
-            ]
+            Link::name('Создать')->method('create'),
         ];
     }
 
