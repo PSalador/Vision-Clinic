@@ -56,13 +56,13 @@ class PatientEdit extends Screen
     public function commandBar() : array
     {
         return [
-            Link::name('Записать на приём')
+            Link::name('Appointments')
                 ->modal('Appointments')
-                ->title('Запись на приём')
+                ->title('Appointments')
                 ->method('createAppointments'),
-            Link::name('Выписать счёт')->method('save'),
-            Link::name('Сохранить')->method('save'),
-            Link::name('Удалить')->method('remove'),
+            Link::name('Write out a bill')->method('save'),
+            Link::name('Save')->method('save'),
+            Link::name('Remove')->method('remove'),
         ];
     }
 
@@ -75,22 +75,22 @@ class PatientEdit extends Screen
     {
         return [
             Layouts::columns([
-                'Левая колонка' => [
+                'Left column' => [
                     PatientFirstRows::class,
                 ],
-                'Правая колонка' => [
+                'Right column' => [
                     PatientSecondRows::class,
                 ],
             ]),
             Layouts::tabs([
-                'Левая колонка' => [
+                'Appointments' => [
                     AppointmentListLayout::class
                 ],
-                'Правая колонка' => [
+                'Invoices' => [
                     InvoiceListLayout::class
                 ],
             ]),
-            // Модальные окна
+            // Modals windows
             Layouts::modals([
                 'Appointments' => [
                     Appointment::class,

@@ -43,7 +43,7 @@ class PatientList extends Screen
     public function commandBar() : array
     {
         return [
-            Link::name('Создать новую запись')->method('create'),
+            Link::name('Create a new record')->method('create'),
         ];
     }
 

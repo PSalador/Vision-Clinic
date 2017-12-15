@@ -18,10 +18,10 @@ class InvoiceListLayout extends Table
     public function fields() : array
     {
         return [
-            'invoice_date'   => 'invoice_date',
-            'invoice_due'    => 'invoice_due',
-            'invoice_status' => 'invoice_status',
-            'ship_date'      => 'ship_date',
+            'invoice_date'   => 'Date',
+            'invoice_due'    => 'Due',
+            'invoice_status' => 'Status',
+            'ship_date'      => 'Ship Date',
 
         ];
     }

@@ -18,8 +18,7 @@ class PatientSecondRows extends Rows
                 'name'     => 'patient.street',
                 'max'      => 255,
                 'required' => true,
-                'title'    => 'street',
-                'help'     => 'Article title',
+                'title'    => 'Street',
             ],
             'city'   => [
                 'tag'      => 'input',
@@ -27,8 +26,7 @@ class PatientSecondRows extends Rows
                 'name'     => 'patient.city',
                 'max'      => 255,
                 'required' => true,
-                'title'    => 'city',
-                'help'     => 'Article title',
+                'title'    => 'City',
             ],
             'email'  => [
                 'tag'      => 'input',
@@ -36,8 +34,7 @@ class PatientSecondRows extends Rows
                 'name'     => 'patient.email',
                 'max'      => 255,
                 'required' => true,
-                'title'    => 'email',
-                'help'     => 'Article title',
+                'title'    => 'Email',
             ],
 
         ];

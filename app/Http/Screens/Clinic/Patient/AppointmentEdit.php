@@ -2,7 +2,6 @@
 
 namespace App\Http\Screens\Clinic\Patient;
 
-use App\Http\Layouts\Clinic\Patient\EditPatient;
 use App\Core\Models\Patient;
 use App\Http\Layouts\Clinic\Patient\PatientFirstRows;
 use App\Http\Layouts\Clinic\Patient\PatientSecondRows;
@@ -49,8 +48,8 @@ class AppointmentEdit extends Screen
     public function commandBar() : array
     {
         return [
-            Link::name('Сохранить')->method('save'),
-            Link::name('Удалить')->method('remove'),
+            Link::name('Save')->method('save'),
+            Link::name('Remove')->method('remove'),
         ];
     }
 
@@ -63,10 +62,10 @@ class AppointmentEdit extends Screen
     {
         return [
             Layouts::columns([
-                'Колонка 2' => [
+                'Left column' => [
                     PatientFirstRows::class,
                 ],
-                'Колонка 1' => [
+                'Right column' => [
                     PatientSecondRows::class,
                 ],
             ]),

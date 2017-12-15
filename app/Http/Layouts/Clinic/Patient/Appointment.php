@@ -18,7 +18,7 @@ class Appointment extends Rows
                 'tag'      => 'datetime',
                 'name'     => 'appointment_time',
                 'required' => true,
-                'title'    => 'Время записи',
+                'title'    => 'Time',
             ],
             'appointment_type' => [
                 'tag'      => 'input',
@@ -26,16 +26,15 @@ class Appointment extends Rows
                 'name'     => 'appointment_type',
                 'max'      => 255,
                 'required' => true,
-                'title'    => 'Тип приёма',
-                'help'     => 'Article title',
+                'title'    => 'Type',
             ],
             'doctor_notes' => [
                 'tag'      => 'textarea',
                 'name'     => 'doctor_notes',
                 "rows"      => 10,
                 'required' => true,
-                'title'    => 'Показания врача',
-                'help'     => 'На что жаловался пациент?',
+                'title'    => 'Doctor notes',
+                'help'     => 'What did the patient complain about?',
             ],
         ];
     }

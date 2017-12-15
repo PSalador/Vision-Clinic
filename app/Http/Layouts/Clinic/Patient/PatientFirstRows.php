@@ -18,8 +18,7 @@ class PatientFirstRows extends Rows
                 'name'     => 'patient.first_name',
                 'max'      => 255,
                 'required' => true,
-                'title'    => 'first_name',
-                'help'     => 'Article title',
+                'title'    => 'First name',
             ],
             'last_name'  => [
                 'tag'      => 'input',
@@ -27,17 +26,15 @@ class PatientFirstRows extends Rows
                 'name'     => 'patient.last_name',
                 'max'      => 255,
                 'required' => true,
-                'title'    => 'last_name',
-                'help'     => 'Article title',
+                'title'    => 'Last name',
             ],
             'phone'      => [
                 'tag'      => 'input',
                 'type'     => 'text',
                 'name'     => 'patient.phone',
-                'max'      => 255,
+                'max'      => 12,
                 'required' => true,
-                'title'    => 'phone',
-                'help'     => 'Article title',
+                'title'    => 'Phone',
             ],
         ];
     }

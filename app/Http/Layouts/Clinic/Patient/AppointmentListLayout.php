@@ -18,9 +18,9 @@ class AppointmentListLayout extends Table
     public function fields() : array
     {
         return [
-            'appointment_time' => 'appointment_time',
-            'appointment_type' => 'appointment_type',
-            'doctor_notes'     => 'doctor_notes',
+            'appointment_time' => 'Time',
+            'appointment_type' => 'Type',
+            'doctor_notes'     => 'Notes',
         ];
     }
 }

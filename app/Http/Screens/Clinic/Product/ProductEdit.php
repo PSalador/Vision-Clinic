@@ -46,8 +46,8 @@ class ProductEdit extends Screen
     public function commandBar() : array
     {
         return [
-            Link::name('Сохранить')->method('save'),
-            Link::name('Удалить')->method('remove'),
+            Link::name('Save')->method('save'),
+            Link::name('Remove')->method('remove'),
         ];
     }
 

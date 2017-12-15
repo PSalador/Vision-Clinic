@@ -43,7 +43,7 @@ class ProductList extends Screen
     public function commandBar() : array
     {
         return [
-            Link::name('Создать')->method('create'),
+            Link::name('Create')->method('create'),
         ];
     }
 
