@@ -2,11 +2,13 @@
 
 namespace App\Http\Screens\Clinic\Patient;
 
+use App\Http\Layouts\Clinic\Patient\Appointment;
 use App\Http\Layouts\Clinic\Patient\AppointmentListLayout;
 use App\Core\Models\Patient;
 use App\Http\Layouts\Clinic\Patient\InvoiceListLayout;
 use App\Http\Layouts\Clinic\Patient\PatientFirstRows;
 use App\Http\Layouts\Clinic\Patient\PatientSecondRows;
+use App\Http\Requests\AppointmentRequest;
 use Orchid\Platform\Facades\Alert;
 use Orchid\Platform\Screen\Layouts;
 use Orchid\Platform\Screen\Link;
@@ -41,8 +43,8 @@ class PatientEdit extends Screen
 
         return [
             'patient'     => $patient,
-            'appointment' => $patient->appointments()->orderBy('updated_at')->paginate(10),
-            'invoice'     => $patient->invoices()->orderBy('updated_at')->paginate(10),
+            'appointment' => $patient->appointments()->orderByDesc('updated_at')->paginate(10),
+            'invoice'     => $patient->invoices()->orderByDesc('updated_at')->paginate(10),
         ];
     }
 
@@ -54,7 +56,10 @@ class PatientEdit extends Screen
     public function commandBar() : array
     {
         return [
-            Link::name('Записать на приём')->method('save'),
+            Link::name('Записать на приём')
+                ->modal('Appointments')
+                ->title('Запись на приём')
+                ->method('createAppointments'),
             Link::name('Выписать счёт')->method('save'),
             Link::name('Сохранить')->method('save'),
             Link::name('Удалить')->method('remove'),
@@ -70,19 +75,25 @@ class PatientEdit extends Screen
     {
         return [
             Layouts::columns([
-                'Колонка 2' => [
+                'Левая колонка' => [
                     PatientFirstRows::class,
                 ],
-                'Колонка 1' => [
+                'Правая колонка' => [
                     PatientSecondRows::class,
                 ],
             ]),
-            Layouts::columns([
-                'Колонка 1' => [
+            Layouts::tabs([
+                'Левая колонка' => [
                     AppointmentListLayout::class
                 ],
-                'Колонка 2' => [
+                'Правая колонка' => [
                     InvoiceListLayout::class
+                ],
+            ]),
+            // Модальные окна
+            Layouts::modals([
+                'Appointments' => [
+                    Appointment::class,
                 ],
             ]),
         ];
@@ -109,11 +120,23 @@ class PatientEdit extends Screen
      */
     public function remove(Patient $patient)
     {
-
         $patient->delete();
         Alert::info('Message');
 
         return redirect()->route('dashboard.clinic.patient.list');
+    }
+
+    /**
+     * @param Patient            $patient
+     * @param AppointmentRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function createAppointments(Patient $patient, AppointmentRequest $request){
+        $appointent = new \App\Core\Models\Appointment($request->all());
+        $patient->appointments()->save($appointent);
+        Alert::info('Message');
+        return redirect()->back();
     }
 
 }

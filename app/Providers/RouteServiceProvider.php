@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Core\Models\Patient;
+use App\Core\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -42,6 +43,10 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('patient', function ($value) {
             return Patient::firstOrNew(['id'=>$value]);
+        });
+
+        Route::bind('product', function ($value) {
+            return Product::firstOrNew(['id'=>$value]);
         });
     }
 

@@ -2,15 +2,9 @@
 
 namespace App\Http\Screens\Clinic\Product;
 
-use App\Http\Layouts\Clinic\Patient\AppointmentListLayout;
-use App\Http\Layouts\Clinic\Patient\EditPatient;
-use App\Http\Layouts\Clinic\Patient\EditTablePatient;
-use App\Core\Models\Patient;
-use App\Http\Layouts\Clinic\Patient\InvoiceListLayout;
-use App\Http\Layouts\Clinic\Patient\PatientFirstRows;
-use App\Http\Layouts\Clinic\Patient\PatientSecondRows;
+use App\Core\Models\Product;
+use App\Http\Layouts\Clinic\Product\ProductRows;
 use Orchid\Platform\Facades\Alert;
-use Orchid\Platform\Screen\Layouts;
 use Orchid\Platform\Screen\Link;
 use Orchid\Platform\Screen\Screen;
 
@@ -33,18 +27,14 @@ class ProductEdit extends Screen
     /**
      * Query data
      *
-     * @param Patient $patient
+     * @param Product $product
      *
      * @return array
      */
-    public function query($patient = null) : array
+    public function query($product = null) : array
     {
-        $patient = is_null($patient) ? new Patient() : $patient;
-
         return [
-            'patient'     => $patient,
-            'appointment' => $patient->appointments()->orderBy('updated_at')->paginate(10),
-            'invoice'     => $patient->invoices()->orderBy('updated_at')->paginate(10),
+            'product' => is_null($product) ? new Product() : $product,
         ];
     }
 
@@ -56,8 +46,6 @@ class ProductEdit extends Screen
     public function commandBar() : array
     {
         return [
-            Link::name('Записать на приём')->method('save'),
-            Link::name('Выписать счёт')->method('save'),
             Link::name('Сохранить')->method('save'),
             Link::name('Удалить')->method('remove'),
         ];
@@ -71,51 +59,35 @@ class ProductEdit extends Screen
     public function layout() : array
     {
         return [
-            Layouts::columns([
-                'Колонка 2' => [
-                    PatientFirstRows::class,
-                ],
-                'Колонка 1' => [
-                    PatientSecondRows::class,
-                ],
-            ]),
-            Layouts::columns([
-                'Колонка 1' => [
-                    AppointmentListLayout::class
-                ],
-                'Колонка 2' => [
-                    InvoiceListLayout::class
-                ],
-            ]),
+            ProductRows::class,
         ];
     }
 
     /**
-     * @param Patient $patient
+     * @param Product $product
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(Patient $patient)
+    public function save(Product $product)
     {
-        $patient->fill($this->request->get('patient'))->save();
+        $product->fill($this->request->get('product'))->save();
         Alert::info('Message');
 
-        return redirect()->route('dashboard.clinic.patient.list');
+        return redirect()->route('dashboard.clinic.product.list');
     }
 
     /**
-     * @param Patient $patient
+     * @param Product $product
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function remove(Patient $patient)
+    public function remove(Product $product)
     {
-
-        $patient->delete();
+        $product->delete();
         Alert::info('Message');
 
-        return redirect()->route('dashboard.clinic.patient.list');
+        return redirect()->route('dashboard.clinic.product.list');
     }
 
 }
