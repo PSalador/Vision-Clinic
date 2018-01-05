@@ -2,6 +2,10 @@
 
 namespace App\Http\Layouts\Clinic\Patient;
 
+use App\Http\Filters\LastNamePatient;
+use Orchid\Platform\Http\Filters\CreatedFilter;
+use Orchid\Platform\Http\Filters\SearchFilter;
+use Orchid\Platform\Http\Filters\StatusFilter;
 use Orchid\Platform\Layouts\Table;
 
 class PatientListLayout extends Table
@@ -11,6 +15,21 @@ class PatientListLayout extends Table
      * @var string
      */
     public $data = 'patients';
+
+    /**
+     * HTTP data filters
+     *
+     * @return array
+     */
+    public function filters() : array
+    {
+        return [
+            LastNamePatient::class,
+            SearchFilter::class,
+            //StatusFilter::class,
+            CreatedFilter::class,
+        ];
+    }
 
     /**
      * @return array

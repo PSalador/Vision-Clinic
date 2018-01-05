@@ -13,16 +13,11 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
-    static $password;
-
+$factory->define(App\Core\Models\Invoice::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'invoice_date' => $faker->dateTimeBetween('this week', '+6 days'),
+        'invoice_due'=> $faker->dateTimeBetween('this week', '+6 days'),
+        'invoice_status' => random_int(0,1),
+        'ship_date' => $faker->dateTimeBetween('this week', '+6 days'),
     ];
 });
-
-
-

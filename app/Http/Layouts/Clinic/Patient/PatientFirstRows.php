@@ -35,6 +35,7 @@ class PatientFirstRows extends Rows
                 'max'      => 12,
                 'required' => true,
                 'title'    => 'Phone',
+                'mask'     => '(999) 999-9999',
             ],
         ];
     }

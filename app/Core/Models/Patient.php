@@ -3,9 +3,13 @@
 namespace App\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Platform\Core\Traits\FilterTrait;
 
 class Patient extends Model
 {
+    use FilterTrait;
+
+
     /**
      * The database table used by the model.
      *

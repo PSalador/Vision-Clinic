@@ -2,8 +2,13 @@
 
 namespace App\Http\Screens\Clinic\Patient;
 
+use App\Http\Filters\LastNamePatient;
+use App\Http\Layouts\Clinic\Patient\PatientFirstRows;
 use App\Http\Layouts\Clinic\Patient\PatientListLayout;
 use App\Core\Models\Patient;
+use App\Http\Layouts\Clinic\Patient\PatientSecondRows;
+use Illuminate\Http\Request;
+use Orchid\Platform\Screen\Layouts;
 use Orchid\Platform\Screen\Link;
 use Orchid\Platform\Screen\Screen;
 
@@ -31,7 +36,9 @@ class PatientList extends Screen
     public function query() : array
     {
         return [
-            'patients' => Patient::paginate()
+            'patients' => Patient::filtersApply([
+                LastNamePatient::class,
+            ])->orderBy('id','Desc')->paginate()
         ];
     }
 
@@ -43,7 +50,10 @@ class PatientList extends Screen
     public function commandBar() : array
     {
         return [
-            Link::name('Create a new record')->method('create'),
+            Link::name('Add new patient')
+                ->modal('create')
+                ->title('Add a new patient')
+                ->method('create'),
         ];
     }
 
@@ -56,14 +66,27 @@ class PatientList extends Screen
     {
         return [
             PatientListLayout::class,
+
+            // Modals windows
+            Layouts::modals([
+                'create' => [
+                    PatientFirstRows::class,
+                    PatientSecondRows::class,
+                ],
+            ]),
         ];
     }
 
     /**
+     * @param         $method
+     * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create()
+    public function create($method, Request $request)
     {
-        return redirect()->route('dashboard.clinic.patient.create');
+        $patient = Patient::create($request->get('patient'));
+
+        return redirect()->route('dashboard.clinic.patient.edit',$patient->id);
     }
 }

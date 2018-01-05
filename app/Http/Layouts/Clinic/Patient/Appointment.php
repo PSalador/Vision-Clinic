@@ -2,6 +2,7 @@
 
 namespace App\Http\Layouts\Clinic\Patient;
 
+use App\Http\Widgets\AppointmentTypes;
 use Orchid\Platform\Layouts\Rows;
 
 class Appointment extends Rows
@@ -21,12 +22,11 @@ class Appointment extends Rows
                 'title'    => 'Time',
             ],
             'appointment_type' => [
-                'tag'      => 'input',
-                'type'     => 'text',
+                'tag'      => 'relationship',
                 'name'     => 'appointment_type',
-                'max'      => 255,
                 'required' => true,
-                'title'    => 'Type',
+                'title'    => 'avatar',
+                'handler'  => AppointmentTypes::class,
             ],
             'doctor_notes' => [
                 'tag'      => 'textarea',

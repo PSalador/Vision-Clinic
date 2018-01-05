@@ -47,7 +47,7 @@ class VisionClinic extends Migration
             $table->increments('id');
             $table->timestamp('appointment_time');
             $table->integer('appointment_type');
-            $table->string('doctor_notes');
+            $table->text('doctor_notes');
             $table->integer('patient_id');
             $table->timestamps();
         });

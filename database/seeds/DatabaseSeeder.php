@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        /*
         $faker = Faker\Factory::create('ru_RU'); // create a French faker
         for ($i = 0; $i < 100; $i++) {
             /*
@@ -24,6 +26,7 @@ class DatabaseSeeder extends Seeder
             ]);
             */
 
+        /*
             \App\Core\Models\Invoice::create([
                 'invoice_date' => new \Carbon\Carbon(),
                 'invoice_due'=> new \Carbon\Carbon(),
@@ -43,7 +46,7 @@ class DatabaseSeeder extends Seeder
                     ]);
             */
 
-
+/*
             \App\Core\Models\InvoiceDetail::create([
                 'quantity'   => rand(1, 50),
                 'unit_price' => rand(0, 5000),
@@ -63,6 +66,10 @@ class DatabaseSeeder extends Seeder
 
         }
 
+*/
+
+        $this->call(ProductsTableSeeder::class);
+        $this->call(PatientsTableSeeder::class);
 
         // $this->call(UsersTableSeeder::class);
     }

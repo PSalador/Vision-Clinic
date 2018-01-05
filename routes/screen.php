@@ -3,7 +3,7 @@
 $this->group([
     'namespace' => 'Clinic'
 ],function($route){
-    $route->screen('clinic/patient/create', 'Patient\PatientEdit','dashboard.clinic.patient.create');
+    //$route->screen('clinic/patient/create', 'Patient\PatientEdit','dashboard.clinic.patient.create');
     $route->screen('clinic/patient/{patient}/edit', 'Patient\PatientEdit','dashboard.clinic.patient.edit');
     $route->screen('clinic/patient', 'Patient\PatientList','dashboard.clinic.patient.list');
 

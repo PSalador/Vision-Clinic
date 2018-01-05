@@ -23,6 +23,16 @@ class Appointment extends Model
         'patient_id',
     ];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'appointment_time',
+        'created_at',
+        'updated_at',
+    ];
 
     /**
      * @param $key

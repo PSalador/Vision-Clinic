@@ -13,16 +13,11 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
-    static $password;
+$factory->define(App\Core\Models\Appointment::class, function (Faker $faker) {
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'appointment_time' => $faker->dateTimeBetween('this week', '+6 days'),
+        'appointment_type' => rand(0, 1),
+        'doctor_notes'     => $faker->realText(800),
     ];
 });
-
-
-
