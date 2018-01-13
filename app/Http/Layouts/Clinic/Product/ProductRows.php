@@ -2,47 +2,54 @@
 
 namespace App\Http\Layouts\Clinic\Product;
 
+use Orchid\Platform\Fields\Field;
 use Orchid\Platform\Layouts\Rows;
 
 class ProductRows extends Rows
 {
+
     /**
      * @return array
+     * @throws \Orchid\Platform\Exceptions\TypeException
      */
     public function fields() : array
     {
         return [
-            'name'         => [
-                'tag'      => 'input',
-                'type'     => 'text',
-                'name'     => 'product.name',
-                'max'      => 255,
-                'required' => true,
-                'title'    => 'Name',
-            ],
-            'mrsp'         => [
-                'tag'      => 'input',
-                'type'     => 'number',
-                'name'     => 'product.msrp',
-                'required' => true,
-                'title'    => 'Price',
-                'help'     => 'Manufacturer\'s Suggested Retail Price',
-            ],
-            'descriptions' => [
-                'tag'      => 'textarea',
-                'name'     => 'product.descriptions',
-                "rows"      => 10,
-                'required' => true,
-            ],
-            'picture' => [
-                'tag'      => 'picture',
-                'type'     => 'text',
-                'name'     => 'product.image',
-                'width'    => 300,
-                'height'   => 150,
-                'required' => true,
-                'title'    => 'Image',
-            ],
+
+            Field::tag('input')
+                ->type('text')
+                ->name('product.name')
+                ->max(255)
+                ->required()
+                ->title('Name'),
+
+            Field::tag('input')
+                ->type('number')
+                ->name('product.msrp')
+                ->required()
+                ->title('Price')
+                ->help('Manufacturer\'s Suggested Retail Price'),
+
+            Field::tag('input')
+                ->type('text')
+                ->name('product.category')
+                ->max(255)
+                ->required()
+                ->title('Category'),
+
+            Field::tag('textarea')
+                ->name('product.descriptions')
+                ->required()
+                ->title('Descriptions')
+                ->row(10),
+
+            Field::tag('picture')
+                ->name('product.image')
+                ->required()
+                ->title('Descriptions')
+                ->width(300)
+                ->height(150)
+                ->title('Image'),
         ];
     }
 

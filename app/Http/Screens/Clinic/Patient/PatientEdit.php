@@ -60,7 +60,7 @@ class PatientEdit extends Screen
                 ->modal('Appointments')
                 ->title('Appointments')
                 ->method('createAppointments'),
-            Link::name('Write out a bill')->method('save'),
+            //Link::name('Write out a bill')->method('save'),
             Link::name('Save')->method('save'),
             Link::name('Remove')->method('remove'),
         ];

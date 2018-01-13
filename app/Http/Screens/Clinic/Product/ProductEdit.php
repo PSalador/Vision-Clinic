@@ -68,7 +68,7 @@ class ProductEdit extends Screen
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(Product $product)
+    public function save($test,Product $product)
     {
         $product->fill($this->request->get('product'))->save();
         Alert::info('Message');

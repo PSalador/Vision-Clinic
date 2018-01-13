@@ -31,7 +31,7 @@ class ProductList extends Screen
     public function query() : array
     {
         return [
-            'products' => Product::paginate()
+            'products' => Product::orderBy('id','Desc')->paginate()
         ];
     }
 
