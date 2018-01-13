@@ -10,5 +10,10 @@
 См. https://orchid.software/ru
 
 
+## Данные по умолчанию
+
+```php
+php artisan db:seed
+```
 
 ![ezgif-5-86b9940a8e](https://user-images.githubusercontent.com/5102591/33578535-f03a9c6e-d957-11e7-9989-cbe47587d584.gif)
