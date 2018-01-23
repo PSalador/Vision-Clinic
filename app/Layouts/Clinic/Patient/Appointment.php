@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Layouts\Clinic\Patient;
+namespace App\Layouts\Clinic\Patient;
 
 use App\Http\Widgets\AppointmentTypes;
 use Orchid\Platform\Fields\Field;

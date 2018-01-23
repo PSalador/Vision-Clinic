@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Layouts\Clinic\Patient;
+namespace App\Layouts\Clinic\Patient;
 
 use Orchid\Platform\Http\Filters\SearchFilter;
 use Orchid\Platform\Layouts\Table;

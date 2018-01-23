@@ -3,8 +3,8 @@
 namespace App\Http\Screens\Clinic\Patient;
 
 use App\Core\Models\Patient;
-use App\Http\Layouts\Clinic\Patient\PatientFirstRows;
-use App\Http\Layouts\Clinic\Patient\PatientSecondRows;
+use App\Layouts\Clinic\Patient\PatientFirstRows;
+use App\Layouts\Clinic\Patient\PatientSecondRows;
 use Orchid\Platform\Facades\Alert;
 use Orchid\Platform\Screen\Layouts;
 use Orchid\Platform\Screen\Link;

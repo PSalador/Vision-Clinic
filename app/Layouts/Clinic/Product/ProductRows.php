@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Layouts\Clinic\Product;
+namespace App\Layouts\Clinic\Product;
 
 use Orchid\Platform\Fields\Field;
 use Orchid\Platform\Layouts\Rows;

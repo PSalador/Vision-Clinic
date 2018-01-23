@@ -3,7 +3,7 @@
 namespace App\Http\Screens\Clinic\Product;
 
 use App\Core\Models\Product;
-use App\Http\Layouts\Clinic\Product\ProductRows;
+use App\Layouts\Clinic\Product\ProductRows;
 use Orchid\Platform\Facades\Alert;
 use Orchid\Platform\Screen\Link;
 use Orchid\Platform\Screen\Screen;

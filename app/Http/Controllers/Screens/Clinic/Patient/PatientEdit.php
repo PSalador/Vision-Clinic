@@ -2,12 +2,13 @@
 
 namespace App\Http\Screens\Clinic\Patient;
 
-use App\Http\Layouts\Clinic\Patient\Appointment;
-use App\Http\Layouts\Clinic\Patient\AppointmentListLayout;
+use App\Layouts\Clinic\Patient\Appointment;
+use App\Layouts\Clinic\Patient\AppointmentListLayout;
 use App\Core\Models\Patient;
-use App\Http\Layouts\Clinic\Patient\InvoiceListLayout;
-use App\Http\Layouts\Clinic\Patient\PatientFirstRows;
-use App\Http\Layouts\Clinic\Patient\PatientSecondRows;
+use App\Layouts\Clinic\Patient\ChartsLayout;
+use App\Layouts\Clinic\Patient\InvoiceListLayout;
+use App\Layouts\Clinic\Patient\PatientFirstRows;
+use App\Layouts\Clinic\Patient\PatientSecondRows;
 use App\Http\Requests\AppointmentRequest;
 use Orchid\Platform\Facades\Alert;
 use Orchid\Platform\Screen\Layouts;
@@ -41,10 +42,27 @@ class PatientEdit extends Screen
     {
         $patient = is_null($patient) ? new Patient() : $patient;
 
+        $charts = [
+            [
+                'title'  => "Some Data",
+                'values' => [25, 40, 30, 35, 8, 52, 17, -4],
+            ],
+            [
+                'title'  => "Another Set",
+                'values' => [25, 50, -10, 15, 18, 32, 27, 14],
+            ],
+            [
+                'title'  => "Yet Another",
+                'values' => [15, 20, -3, -15, 58, 12, -17, 37],
+            ],
+        ];
+
+
         return [
             'patient'     => $patient,
             'appointment' => $patient->appointments()->orderByDesc('updated_at')->paginate(10),
             'invoice'     => $patient->invoices()->orderByDesc('updated_at')->paginate(10),
+            'charts' => $charts,
         ];
     }
 
@@ -80,6 +98,9 @@ class PatientEdit extends Screen
                 ],
                 'Right column' => [
                     PatientSecondRows::class,
+                ],
+                'Right column2' => [
+                    ChartsLayout::class,
                 ],
             ]),
             Layouts::tabs([

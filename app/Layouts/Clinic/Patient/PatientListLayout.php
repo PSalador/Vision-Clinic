@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Layouts\Clinic\Patient;
+namespace App\Layouts\Clinic\Patient;
 
 use App\Http\Filters\LastNamePatient;
 use Orchid\Platform\Http\Filters\CreatedFilter;
@@ -27,7 +27,7 @@ class PatientListLayout extends Table
             LastNamePatient::class,
             SearchFilter::class,
             //StatusFilter::class,
-            CreatedFilter::class,
+            //CreatedFilter::class,
         ];
     }
 

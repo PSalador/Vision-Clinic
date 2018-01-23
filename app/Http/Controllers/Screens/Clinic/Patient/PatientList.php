@@ -3,10 +3,10 @@
 namespace App\Http\Screens\Clinic\Patient;
 
 use App\Http\Filters\LastNamePatient;
-use App\Http\Layouts\Clinic\Patient\PatientFirstRows;
-use App\Http\Layouts\Clinic\Patient\PatientListLayout;
+use App\Layouts\Clinic\Patient\PatientFirstRows;
+use App\Layouts\Clinic\Patient\PatientListLayout;
 use App\Core\Models\Patient;
-use App\Http\Layouts\Clinic\Patient\PatientSecondRows;
+use App\Layouts\Clinic\Patient\PatientSecondRows;
 use Illuminate\Http\Request;
 use Orchid\Platform\Screen\Layouts;
 use Orchid\Platform\Screen\Link;
