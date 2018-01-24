@@ -78,13 +78,12 @@ class PatientList extends Screen
     }
 
     /**
-     * @param         $method
      * @param Request $request
-     *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create($method, Request $request)
+    public function create(Request $request)
     {
+
         $patient = Patient::create($request->get('patient'));
 
         return redirect()->route('dashboard.clinic.patient.edit',$patient->id);

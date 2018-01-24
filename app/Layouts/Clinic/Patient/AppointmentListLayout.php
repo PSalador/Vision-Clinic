@@ -3,6 +3,7 @@
 namespace App\Layouts\Clinic\Patient;
 
 use Orchid\Platform\Layouts\Table;
+use Orchid\Platform\Platform\Fields\TD;
 
 class AppointmentListLayout extends Table
 {
@@ -18,23 +19,23 @@ class AppointmentListLayout extends Table
     public function fields() : array
     {
         return [
-            'appointment_time' => [
-                'name'   => 'Time',
-                'width'  => '200px',
-                'action' => function ($appointment) {
-                    return $appointment->appointment_time->toDateString();
-                },
-            ],
-            'appointment_type' => [
-                'name'   => 'Type',
-                'width'  => '200px',
-                'action' => function ($appointment) {
+            TD::name('appointment_time')
+            ->title('Time')
+            ->width('200px')
+            ->setRender(function ($appointment) {
+                return $appointment->appointment_time->toDateString();
+            }),
+
+            TD::name('appointment_type')
+                ->title('appointment_type')
+                ->width('200px')
+                ->setRender(function ($appointment) {
                     $types = config('appointment.types');
                     $message = isset($types[$appointment->appointment_type]['text']) ? $types[$appointment->appointment_type]['text'] : '';
                     return $message;
-                },
-            ],
-            'doctor_notes'     => 'Notes',
+                }),
+            TD::name('doctor_notes')
+                ->title('Notes')
         ];
     }
 }

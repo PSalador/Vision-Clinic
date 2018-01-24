@@ -4,6 +4,7 @@ namespace App\Layouts\Clinic\Patient;
 
 use Orchid\Platform\Http\Filters\SearchFilter;
 use Orchid\Platform\Layouts\Table;
+use Orchid\Platform\Platform\Fields\TD;
 
 class InvoiceListLayout extends Table
 {
@@ -19,24 +20,23 @@ class InvoiceListLayout extends Table
     public function fields() : array
     {
         return [
-            'invoice_date'   => 'Date',
-            'invoice_due'    => 'Due',
-            'invoice_status' => [
-                'name'   => 'Status',
-                'width'  => '200px',
-                'action' => function ($appointment) {
+            TD::name('invoice_date')
+                ->title('Date'),
+            TD::name('invoice_due')
+                ->title('Due'),
+            TD::name('invoice_status')
+                ->title('Status')
+                ->width('200px')
+                ->setRender(function ($appointment) {
 
                     if ($appointment->invoice_status) {
                         return "<span class='icon-check'>";
                     }
 
                     return "<span class='icon-close'>";
-                },
-            ],
-
-
-            'ship_date' => 'Ship Date',
-
+                }),
+            TD::name('ship_date')
+                ->title('Ship Date'),
         ];
     }
 }

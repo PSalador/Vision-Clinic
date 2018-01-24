@@ -68,16 +68,16 @@
         },
         {
             "name": "cocur/slugify",
-            "version": "v3.0.1",
+            "version": "v3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "1fdf2b1219a199301db3d7c60c16d895bba6ccde"
+                "reference": "b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/1fdf2b1219a199301db3d7c60c16d895bba6ccde",
-                "reference": "1fdf2b1219a199301db3d7c60c16d895bba6ccde",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7",
+                "reference": "b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7",
                 "shasum": ""
             },
             "require": {
@@ -129,7 +129,7 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2017-09-24T10:29:04+00:00"
+            "time": "2018-01-22T09:00:48+00:00"
         },
         {
             "name": "composer/semver",
@@ -927,16 +927,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v3.0.12",
+            "version": "v3.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "0d97152e9006481e1608ad4286e53acf20a3c110"
+                "reference": "af391f215ce5899c5dfb0ec95d2186f7c9641fc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/0d97152e9006481e1608ad4286e53acf20a3c110",
-                "reference": "0d97152e9006481e1608ad4286e53acf20a3c110",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/af391f215ce5899c5dfb0ec95d2186f7c9641fc2",
+                "reference": "af391f215ce5899c5dfb0ec95d2186f7c9641fc2",
                 "shasum": ""
             },
             "require": {
@@ -988,7 +988,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2017-12-07T22:15:01+00:00"
+            "time": "2018-01-24T14:04:28+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1368,12 +1368,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchidsoftware/platform.git",
-                "reference": "5333f381f2a934ee1d847771d9920f8ab83be40f"
+                "reference": "edf25877f1f5a7d017c29a3e51dc304500dfca98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchidsoftware/platform/zipball/5333f381f2a934ee1d847771d9920f8ab83be40f",
-                "reference": "5333f381f2a934ee1d847771d9920f8ab83be40f",
+                "url": "https://api.github.com/repos/orchidsoftware/platform/zipball/edf25877f1f5a7d017c29a3e51dc304500dfca98",
+                "reference": "edf25877f1f5a7d017c29a3e51dc304500dfca98",
                 "shasum": ""
             },
             "require": {
@@ -1424,14 +1424,14 @@
                 }
             ],
             "description": "Powerful platform for building a business application using the Laravel framework.",
-            "homepage": "http://orchid.software",
+            "homepage": "https://orchid.software",
             "keywords": [
                 "framework",
                 "laravel",
                 "orchid",
                 "platform"
             ],
-            "time": "2018-01-21T19:33:18+00:00"
+            "time": "2018-01-24T17:38:59+00:00"
         },
         {
             "name": "paragonie/random_compat",

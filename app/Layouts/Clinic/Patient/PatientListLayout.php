@@ -7,6 +7,7 @@ use Orchid\Platform\Http\Filters\CreatedFilter;
 use Orchid\Platform\Http\Filters\SearchFilter;
 use Orchid\Platform\Http\Filters\StatusFilter;
 use Orchid\Platform\Layouts\Table;
+use Orchid\Platform\Platform\Fields\TD;
 
 class PatientListLayout extends Table
 {
@@ -37,17 +38,24 @@ class PatientListLayout extends Table
     public function fields() : array
     {
         return [
-            'last_name'  => [
-                'name'   => 'Last name',
-                'action' => function ($patient) {
-                    return '<a href="' . route('dashboard.clinic.patient.edit',
-                            $patient->id) . '">' . $patient->last_name . '</a>';
-                },
-            ],
-            'first_name' => 'First Name',
-            'phone'      => 'Phone',
-            'email'      => 'Email',
-            'created_at' => 'Date of publication',
+            TD::name('last_name')
+                ->title('Last name')
+                ->setRender(function ($patient) {
+                return '<a href="' . route('dashboard.clinic.patient.edit',
+                        $patient->id) . '">' . $patient->last_name . '</a>';
+            }),
+
+            TD::name('first_name')
+                ->title('First Name'),
+
+            TD::name('phone')
+                ->title('Phone'),
+
+            TD::name('email')
+                ->title('Email'),
+
+            TD::name('created_at')
+                ->title('Date of publication'),
         ];
     }
 }
